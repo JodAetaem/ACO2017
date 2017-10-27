@@ -29,7 +29,7 @@ public class MoteurImp implements Moteur
 	 * @ordered
 	 */
 	
-	private Selection selection;
+	private Selection selection;//c'est un test #passalivaire mdr
 	
 	
 
