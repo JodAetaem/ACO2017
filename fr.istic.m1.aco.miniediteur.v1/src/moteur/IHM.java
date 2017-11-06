@@ -34,7 +34,7 @@ public class IHM {
 				+ "(#copier #coller #couper #selectionner #close)\n\n");
 		
 		while(exec){	// Boucle d'action : les commandes commences par #
-			System.out.println(lemoteur.getTexte());
+			System.out.println(new GetTexte (lemoteur));
 			System.out.println("\n >");
 			str = lihm.sc.nextLine();
 		
@@ -44,7 +44,7 @@ public class IHM {
 			} else if(str.equals("#close")){
 				exec = false;
 				lihm.sc.close();
-				System.out.println("Merci d'avoir utilisé V1 nulle! Votre texte: \n" + lemoteur.getTexte());
+				System.out.println("Merci d'avoir utilisee V1 nulle! Votre texte: \n" + new GetTexte (lemoteur));
 			}else {
 				new Inserer(lemoteur, str).execute();
 				}
@@ -54,37 +54,3 @@ public class IHM {
 	}
 }
 
-
-
-
-
-/*		A JETER PLUS TARD QUAND ON SERA SUR WESH
- * 
- * 		while(exec){	// Boucle d'action : les commandes commences par #
-			System.out.println(lemoteur.getTexte());
-			System.out.println("\n >");
-			str = lihm.sc.nextLine();
-		
-			if(str.equals("#copier")){
-				
-			} else if(str.equals("#coller")){
-				Coller.execute();
-			} else if(str.equals("#couper")){
-				lemoteur.Couper();
-			}else if(str.equals("#selectionner")){
-				System.out.println("\n > Debut");
-				debut = lihm.sc.nextInt();
-				System.out.println("\n > Fin");
-				fin = lihm.sc.nextInt();
-				lemoteur.Selectionner(debut,fin);
-				lihm.sc.nextLine();
-			} else if(str.equals("#close")){
-				exec = false;
-				lihm.sc.close();
-				System.out.println("Merci d'avoir utilisé V1 nulle! Votre texte: \n" + lemoteur.getTexte());
-			}else {lemoteur.Inserer(str);}
-			
-		}
- * 
- * 
- * */
