@@ -6,7 +6,6 @@ import java.util.Scanner;
 public class IHM {
 	
 	Scanner sc = new Scanner(System.in);
-	//Command command = new Command ();
 
 	public static void init(HashMap<String,Command> hashish, Moteur lemoteur){
 			hashish.put("#copier", new Copier(lemoteur));
