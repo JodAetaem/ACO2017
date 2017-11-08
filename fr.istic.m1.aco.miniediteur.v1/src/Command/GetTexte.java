@@ -9,6 +9,6 @@ public class GetTexte extends CommandImp {
 	}
 	@Override
 	public void execute(){
-		LM.getTexte();
+		 System.out.println(LM.getTexte());
 	}
 }

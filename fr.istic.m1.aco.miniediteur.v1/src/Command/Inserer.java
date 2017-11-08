@@ -2,14 +2,15 @@ package Command;
 import moteur.*;
 
 public class Inserer  extends CommandImp{
-	String txt;
-	public Inserer (Moteur lm, String st){
+	private IHM ihm;
+	public Inserer (Moteur lm, IHM ihm){
 		super(lm);
-		this.txt = st;
+		this.ihm = ihm;
 	}
 	
 	@Override
 	public void execute(){
-		LM.Inserer(txt);
+		String str = this.ihm.getTexte();
+		LM.Inserer(str);
 	}
 }
