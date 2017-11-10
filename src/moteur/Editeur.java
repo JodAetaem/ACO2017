@@ -13,7 +13,7 @@ import Command.*;
  *
  */
 public class Editeur{
-	
+	//test 1/2
 	private Moteur lemoteur = new MoteurImp("");
 	private IHM interfaces = new IHM();
 	
