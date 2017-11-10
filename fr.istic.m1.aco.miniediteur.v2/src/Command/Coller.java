@@ -1,4 +1,5 @@
 package Command;
+import Memento.Memento;
 import moteur.*;
 
 public class Coller extends CommandImp{
@@ -11,4 +12,6 @@ public class Coller extends CommandImp{
 	public void execute(){
 		LM.Coller();
 	}
+
+
 }
