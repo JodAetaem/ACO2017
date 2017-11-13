@@ -21,7 +21,7 @@ public class Editeur{
 	private Couper couper = new Couper(this.lemoteur);
 	private Coller coller = new Coller(this.lemoteur);
 	private Copier copier = new Copier(this.lemoteur);
-	private Selectionner selectionner = new Selectionner(this.lemoteur);
+	private Selectionner selectionner = new Selectionner(this.lemoteur,interfaces);
 	private GetTexte texte = new GetTexte(this.lemoteur);
 	
 	public Moteur getMoteur(){
