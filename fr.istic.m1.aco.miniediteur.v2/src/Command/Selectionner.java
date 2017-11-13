@@ -1,33 +1,30 @@
 package Command;
-
-
-import java.util.Scanner;
+import Memento.*;
 
 import moteur.*;
 
 public class Selectionner extends CommandImp {
-	Scanner sc = new Scanner(System.in);
+	private IHM ihm;
+	
 
-	public Selectionner(Moteur lemoteur) {
+	public Selectionner(Moteur lemoteur,IHM ihm) {
 		super(lemoteur);
+		this.ihm=ihm;
 	}
-	/**
-	 * 
-	 * @return tableau de 2 int contenant le debut (0) et la fin (1)
-	 */
-	public int[] getInt(int[] bob){
-		System.out.println("Debut>\n");
-		bob[0] = sc.nextInt();
-		System.out.println("Fin>\n");
-		bob[1] = sc.nextInt();
-		return bob;
-	}
+	
 
 	@Override
 	public void execute() {
 		int[] debfin = new int[2];
-		getInt(debfin);
+		if(!estrejoue) {
+		ihm.getInt(debfin);
 		LM.Selectionner(debfin[0],debfin[1]);
+		}
+		else {	
+		int start = ((MementoSelectionner) memento).getSel().getStart();
+		int end = ((MementoSelectionner) memento).getSel().getEnd();
+		LM.Selectionner(start,end);
+		}
 	}
 
 }
