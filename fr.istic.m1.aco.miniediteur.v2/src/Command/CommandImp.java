@@ -8,7 +8,9 @@ public abstract class CommandImp implements Command{
 	protected Memento memento ;
 	protected boolean estrejoue;
 	
-	
+	public void setEstRejoue () {
+		estrejoue = true;
+	}
 	public CommandImp (Moteur lemoteur){
 		LM = lemoteur ;
 	}
@@ -17,5 +19,6 @@ public abstract class CommandImp implements Command{
 	}
 	public void setMemento (Memento m) {
 		memento = m;
+		estrejoue=true;
 	}
 }
