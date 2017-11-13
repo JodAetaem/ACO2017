@@ -1,5 +1,7 @@
 package Command;
 import moteur.*;
+import Memento.*;
+
 
 public class Inserer  extends CommandImp{
 	private IHM ihm;
@@ -10,7 +12,13 @@ public class Inserer  extends CommandImp{
 	
 	@Override
 	public void execute(){
+		if(!estrejoue) {
 		String str = this.ihm.getTexte();
 		LM.Inserer(str);
+		}
+		else {
+			String str = ((MementoInserer) memento).getS();
+			LM.Inserer(str);
+		}
 	}
 }
