@@ -5,8 +5,8 @@ import Memento.*;
 
 public class Inserer  extends CommandImp{
 	private IHM ihm;
-	public Inserer (Moteur lm, IHM ihm){
-		super(lm);
+	public Inserer (Moteur lm, IHM ihm,Enregistreur e){
+		super(lm,e);
 		this.ihm = ihm;
 	}
 	
@@ -17,8 +17,12 @@ public class Inserer  extends CommandImp{
 		LM.Inserer(str);
 		}
 		else {
-			String str = ((MementoInserer) memento).getS();
-			LM.Inserer(str);
+			//String str = records.getMap();//..getS(); TODO
+			//LM.Inserer(str);
 		}
+		if(records.getRecording()) {
+			records.add(this,(MementoInserer) memento);
+		}
+		estrejoue = false;
 	}
 }

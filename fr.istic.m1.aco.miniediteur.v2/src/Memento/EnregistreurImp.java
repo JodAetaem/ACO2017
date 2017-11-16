@@ -3,14 +3,14 @@ import java.util.HashMap;
 
 import Command.*;
 
-public class EnregistreurImp {
+public class EnregistreurImp implements Enregistreur {
 	private HashMap<Memento,Command> hm ;
 	private boolean isrecording ;
 	private boolean isreplaying;
 	public EnregistreurImp() {
 		hm=new HashMap<Memento,Command>();
 		isrecording = false;
-		isreplaying=false;
+		isreplaying=false;//a enlever si on veut faire des macro de macro ! 
 	}
 	public boolean getRecording(){
 		return isrecording;
@@ -19,8 +19,10 @@ public class EnregistreurImp {
 		return isreplaying;
 	}
 	public void execute() {
+		isreplaying=true;
 		for (Memento key   : hm.keySet()) {
-		     hm.get(key).execute();  //get() is less efficient 
+			hm.get(key).setMemento(key);
+		    hm.get(key).execute();  
 		}    
 	}
 	public HashMap<Memento,Command> getMap (){
@@ -38,4 +40,5 @@ public class EnregistreurImp {
 	public void add (Command c, Memento m) {
 		hm.put(m, c);//solar
 	}
+
 }

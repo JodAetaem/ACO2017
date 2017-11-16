@@ -4,16 +4,15 @@ import Memento.Enregistreur;
 import moteur.Moteur;
 
 public class Replay extends CommandImp{
-	private Enregistreur r;
-	public Replay(Moteur lemoteur,Enregistreur r) {
-		super(lemoteur);
+	public Replay(Moteur lemoteur,Enregistreur e) {
+		super(lemoteur,e);
 		
 		
 	}
 
 	@Override
 	public void execute() {
-		r.execute();
-		
+		records.execute();
+		//a ajouter dans la map de records si on veut rejouer des macro pendant une macro
 	}
 }

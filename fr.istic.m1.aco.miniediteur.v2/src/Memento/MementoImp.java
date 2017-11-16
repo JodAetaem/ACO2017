@@ -1,5 +1,5 @@
 package Memento;
 
-public class MementoImp {
+public class MementoImp implements Memento {
 	
 }

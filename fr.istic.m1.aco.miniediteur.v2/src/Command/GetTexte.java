@@ -1,14 +1,18 @@
 package Command;
 import moteur.*;
-
+import Memento.*;
 public class GetTexte extends CommandImp {
 	
 	
-	public GetTexte (Moteur lm) {
-		super(lm);
+	public GetTexte (Moteur lm,Enregistreur e) {
+		super(lm,e);
 	}
 	@Override
 	public void execute(){
 		 System.out.println(LM.getTexte());
+		 if(records.getRecording()) {
+			 records.add(this, ((MementoAfficher)memento));
+		 }
+		 estrejoue=false;
 	}
 }

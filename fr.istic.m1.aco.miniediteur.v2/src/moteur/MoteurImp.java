@@ -71,16 +71,30 @@ public class MoteurImp implements Moteur
 	 * @ordered
 	 */
 	public void Selectionner(int start, int end) {
-		if(texte.length()<end || texte.length()<start){
+		if(end ==-1 ) {//Cas pour selectionner de start a la fin du texte
+			end=texte.length();
+			if(texte.length()<end || texte.length()<start){
+				System.err.println("Erreur: Debut de taille incorrect");
+			}
+			else if (end<start){
+				System.err.println("Erreur : end<Start");
+			}
+			else{
+				selection.setStart(start);
+				selection.setEnd(end);
+				}
+		}
+		else if(texte.length()<end || texte.length()<start){
 			System.err.println("Erreur: Debut ou fin de taille incorrect");
 		}
 		else if (end<start){
 			System.err.println("Erreur : end<Start");
 		}
 		else{
-		selection.setStart(start);
-		selection.setEnd(end);
-		}
+			selection.setStart(start);
+			selection.setEnd(end);
+			}
+		
 	}
 
 	/**

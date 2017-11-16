@@ -5,8 +5,7 @@ import java.util.HashMap;
 import Command.*;
 
 public interface Enregistreur {
-	public Enregistreur getEnregistreur();
-	public void setEnregistreur(Enregistreur e);
+	public boolean getRecording();
 	public void start();
 	public void stop();
 	public void execute();
