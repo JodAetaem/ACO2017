@@ -60,6 +60,11 @@ public class Selection
 	public Selection(){
 		super();
 	}
+	
+	public Selection(int Start, int End){
+		start=Start;
+		end=End;
+	}
 
 	/**
 	 * <!-- begin-user-doc -->

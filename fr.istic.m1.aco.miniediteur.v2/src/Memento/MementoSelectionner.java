@@ -4,8 +4,8 @@ import moteur.Selection;
 
 public class MementoSelectionner  extends MementoImp {
 	private Selection sel ;
-	public MementoSelectionner (Selection s) {
-		sel=s;
+	public MementoSelectionner (int a, int b) {
+		sel = new Selection (a,b);
 	}
 	public Selection getSel() {
 		return sel;

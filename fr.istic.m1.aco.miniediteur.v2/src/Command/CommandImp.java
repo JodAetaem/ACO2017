@@ -5,7 +5,7 @@ import moteur.*;
 public abstract class CommandImp implements Command{
 	
 	protected Moteur LM=new MoteurImp("");
-	protected Memento memento ;
+	protected Memento memento  ;
 	protected boolean estrejoue;
 	protected Enregistreur records;
 	

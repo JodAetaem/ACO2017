@@ -12,7 +12,7 @@ public class Copier extends CommandImp{
 	public void execute(){
 		LM.Copier();
 		if(records.getRecording()) {
-			records.add(this,((MementoCopier) memento));
+			records.add(this,new MementoCopier());
 		}
 		estrejoue=false;
 	}

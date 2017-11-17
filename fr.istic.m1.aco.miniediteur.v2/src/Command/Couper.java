@@ -11,7 +11,7 @@ public class Couper extends CommandImp{
 	public void execute(){
 		LM.Couper();
 		if(records.getRecording()) {
-			records.add(this,((MementoCouper) memento));
+			records.add(this,new MementoCouper());
 		}estrejoue=false;
 	}
 }

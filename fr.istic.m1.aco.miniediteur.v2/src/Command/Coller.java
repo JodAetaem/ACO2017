@@ -13,7 +13,7 @@ public class Coller extends CommandImp{
 	public void execute(){
 		LM.Coller();
 		if(records.getRecording()) {
-			records.add(this,((MementoColler) memento));
+			records.add(this,((new MementoColler() )));
 		}
 		estrejoue=false;
 	}

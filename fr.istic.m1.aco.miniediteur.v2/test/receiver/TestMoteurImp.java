@@ -33,6 +33,7 @@ public class TestMoteurImp {
 		assertFalse((lemoteur.getSelection().getStart()==0)&& lemoteur.getSelection().getEnd()==45 );
 		lemoteur.Selectionner(13, 10);	// une selection incoh�rente --> erreur
 		assertFalse((lemoteur.getSelection().getStart()==13)&& lemoteur.getSelection().getEnd()==10);
+		assertTrue((lemoteur.getSelection().getStart()==10)&& lemoteur.getSelection().getEnd()==13);
 	}
 
 	@Test

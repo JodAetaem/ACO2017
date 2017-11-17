@@ -19,6 +19,7 @@ public class Selectionner extends CommandImp {
 		if(!estrejoue) {
 			ihm.getInt(debfin);
 			LM.Selectionner(debfin[0],debfin[1]);
+			
 		}
 		else {	
 			int start = ((MementoSelectionner) memento).getSel().getStart();
@@ -26,7 +27,7 @@ public class Selectionner extends CommandImp {
 			LM.Selectionner(start,end);
 		}
 		if(records.getRecording()) {
-			records.add(this,(MementoSelectionner) memento);
+			records.add(this,new MementoSelectionner(debfin[0],debfin[1]));
 		}
 		estrejoue=false;
 	}

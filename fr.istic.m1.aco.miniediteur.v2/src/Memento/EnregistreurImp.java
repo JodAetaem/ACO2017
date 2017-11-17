@@ -18,6 +18,14 @@ public class EnregistreurImp implements Enregistreur {
 	public boolean getReplaying(){
 		return isreplaying;
 	}
+	
+	
+	public void pp() {
+		String s=" je suis "+ (isrecording ? " " : "not") + "recording. ";
+		for(Memento m : hm.keySet()) {
+			s+=m.toString();
+		}
+	}
 	public void execute() {
 		isreplaying=true;
 		for (Memento key   : hm.keySet()) {

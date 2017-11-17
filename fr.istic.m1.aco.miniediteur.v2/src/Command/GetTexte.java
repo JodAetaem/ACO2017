@@ -10,9 +10,6 @@ public class GetTexte extends CommandImp {
 	@Override
 	public void execute(){
 		 System.out.println(LM.getTexte());
-		 if(records.getRecording()) {
-			 records.add(this, ((MementoAfficher)memento));
-		 }
 		 estrejoue=false;
 	}
 }

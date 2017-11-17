@@ -71,29 +71,48 @@ public class MoteurImp implements Moteur
 	 * @ordered
 	 */
 	public void Selectionner(int start, int end) {
-		if(end ==-1 ) {//Cas pour selectionner de start a la fin du texte
-			end=texte.length();
-			if(texte.length()<end || texte.length()<start){
-				System.err.println("Erreur: Debut de taille incorrect");
+		if(end !=-1 ) {
+			if(start < 0 || end < 0 ) {
+				selection.setStart(0);
+				selection.setEnd(0);
+			}
+			else if(texte.length()<end ){
+				if(texte.length()<start) {
+					selection.setEnd(texte.length()); //end et start son plus grand que la longeur u texte
+					selection.setStart(texte.length());//on selectionne donc tout le texte
+				}
+				else {
+					selection.setStart(start);
+					selection.setEnd(texte.length());
+				}
+			}
+			else if(texte.length()<start) { //si jamais selection end correct mais start incorrect (ex: 117000 et 3)
+				selection.setStart(end);	// mets le curseur a la position valide end
+				selection.setEnd(end);
 			}
 			else if (end<start){
-				System.err.println("Erreur : end<Start");
-			}
-			else{
+				selection.setStart(end);
+				selection.setEnd(start);
+				
+			}else {
 				selection.setStart(start);
 				selection.setEnd(end);
 				}
 		}
-		else if(texte.length()<end || texte.length()<start){
-			System.err.println("Erreur: Debut ou fin de taille incorrect");
-		}
-		else if (end<start){
-			System.err.println("Erreur : end<Start");
-		}
-		else{
-			selection.setStart(start);
-			selection.setEnd(end);
+		else {
+			if(start<0) {
+				selection.setStart(0);
+				selection.setEnd(texte.length());
 			}
+			else if(texte.length()<start) {
+				selection.setEnd(texte.length()); //end et start son plus grand que la longeur u texte
+				selection.setStart(texte.length());//on selectionne donc tout le texte
+			}
+			else {
+				selection.setStart(start);
+				selection.setEnd(texte.length());
+			}
+		}
 		
 	}
 

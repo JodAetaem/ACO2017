@@ -12,16 +12,18 @@ public class Inserer  extends CommandImp{
 	
 	@Override
 	public void execute(){
+		String str;
 		if(!estrejoue) {
-		String str = this.ihm.getTexte();
-		LM.Inserer(str);
+			str = this.ihm.getTexte();
+			LM.Inserer(str);
 		}
 		else {
-			//String str = records.getMap();//..getS(); TODO
-			//LM.Inserer(str);
+			str = ((MementoInserer) memento).getS();
+			LM.Inserer(str);
 		}
 		if(records.getRecording()) {
-			records.add(this,(MementoInserer) memento);
+			
+			records.add(this, new MementoInserer(str));
 		}
 		estrejoue = false;
 	}
