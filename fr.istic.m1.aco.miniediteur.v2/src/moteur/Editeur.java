@@ -35,6 +35,12 @@ public class Editeur{
 		return this.interfaces;
 	}
 	
+	public IHM getInterfaces() {
+		return interfaces;
+	}
+	public void setInterfaces(IHM interfaces) {
+		this.interfaces = interfaces;
+	}
 	public static void main (String[] args){
 	Editeur editor = new Editeur();
 	//On met toutes les commandes dans la hashmap de l'IHM 
