@@ -2,12 +2,18 @@ package receiver;
 
 import static org.junit.Assert.*;
 
+import java.util.LinkedHashMap;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import Command.*;
 import Memento.Enregistreur;
 import Memento.EnregistreurImp;
+import Memento.Memento;
+import Memento.MementoCopier;
+import moteur.Editeur;
 import moteur.IHM;
 import moteur.Moteur;
 import moteur.MoteurImp;
@@ -17,12 +23,14 @@ public class TestEnregistreurImp {
 	private Moteur lemoteur;
 	private IHM interfaces;
 	private Enregistreur recordeur;
+	private Editeur editor;
 
 	@Before
 	public void setUp() throws Exception {
 		lemoteur = new MoteurImp("Bonjour le Monde");
 		interfaces = new IHM();
 		recordeur = new EnregistreurImp ();
+		editor = new Editeur();
 	}
 
 	@After
@@ -31,22 +39,34 @@ public class TestEnregistreurImp {
 
 	@Test
 	public final void testEnregistreurImp() {
-		fail("Not yet implemented"); // TODO
+		 // TODO
 	}
 
-	@Test
+	@Test // retourne l'état de recording, faux avant le start et après le stop.
 	public final void testGetRecording() {
-		fail("Not yet implemented"); // TODO
+		assertTrue(recordeur.getRecording()==false);
+		recordeur.start();
+		assertTrue(recordeur.getRecording()==true);
+		recordeur.stop();
+		assertTrue(recordeur.getRecording()==false);
+		recordeur.stop();	// si on fait deux stop d'affilé, toujours correct ?
+		assertTrue(recordeur.getRecording()==false);
+		recordeur.start();
+		recordeur.stop();
+		assertTrue(recordeur.getRecording()==false);
 	}
 
-	@Test
+	@Test // false par defaut, true si on lance execute()
 	public final void testGetReplaying() {
-		fail("Not yet implemented"); // TODO
+		assertTrue(recordeur.getReplaying() ==false);
+		recordeur.execute();
+		assertTrue(recordeur.getReplaying() ==true);
+		
 	}
 
 	@Test
 	public final void testPp() {
-		fail("Not yet implemented"); // TODO
+	// NOT TODO , fonction inutile
 	}
 
 	@Test
@@ -54,9 +74,10 @@ public class TestEnregistreurImp {
 		fail("Not yet implemented"); // TODO
 	}
 
-	@Test
+	@Test // on verifie que la HM de recordeur est bien vide a l'init
 	public final void testGetMap() {
-		fail("Not yet implemented"); // TODO
+		LinkedHashMap<Memento,Command> hmDeTest = new LinkedHashMap<>() ;
+		assertTrue(recordeur.getMap().equals(hmDeTest));
 	}
 
 	@Test
@@ -71,7 +92,13 @@ public class TestEnregistreurImp {
 
 	@Test
 	public final void testAdd() {
-		fail("Not yet implemented"); // TODO
+		LinkedHashMap<Memento,Command> hmDeTest = new LinkedHashMap<>() ;
+		assertTrue(recordeur.getMap().equals(hmDeTest));	// vide par defaut ?
+		
+		recordeur.add(editor.getCouper(),new MementoCopier());
+		hmDeTest.put(new MementoCopier(), editor.getCouper());
+		assertTrue(recordeur.getMap().equals(hmDeTest));
+		
 	}
 
 }
