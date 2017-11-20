@@ -11,7 +11,6 @@ public class Start extends CommandImp {
 	@Override
 	public void execute() {
 		records.start();
-		System.out.println("recording has started");
 	 //a ajouter dans la map de record si on veut faire des macros de macro 
 
 		

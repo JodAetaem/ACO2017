@@ -12,7 +12,6 @@ public class Stop extends CommandImp {
 	@Override
 	public void execute() {
 		records.stop();
-		System.out.println("recording has been end ");
 		//a ajouter dans la map de records si on veut faire macro de macro 
 	
 	}
