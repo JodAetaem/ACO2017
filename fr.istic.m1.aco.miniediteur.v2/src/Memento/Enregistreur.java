@@ -6,6 +6,7 @@ import Command.*;
 
 public interface Enregistreur {
 	public boolean getRecording();
+	public boolean getReplaying();
 	public void start();
 	public void stop();
 	public void execute();
