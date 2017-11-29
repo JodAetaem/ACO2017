@@ -71,7 +71,48 @@ public class TestEnregistreurImp {
 
 	@Test
 	public final void testExecute() {
-		fail("Not yet implemented"); // TODO
+		/*
+		recordeur.start();
+		lemoteur.Selectionner(0, 7);// Seletionne "Bonjour"
+		lemoteur.Couper();
+		lemoteur.Selectionner(100, 100);// Mets le curseur a la fin 
+		lemoteur.Coller();
+		recordeur.stop();
+		assertTrue(lemoteur.getTexte().toString().equals(" le MondeBonjour")); //les commandes on bien été éxécuté ?
+		recordeur.execute();
+		System.out.println(lemoteur.getTexte().toString());
+		assertTrue(lemoteur.getTexte().toString().equals("deBonjour le Mon"));
+		*/
+		
+		
+		editor.getIHM().init("#couper", editor.getCouper());
+		editor.getIHM().init("#coller", editor.getColler());
+		editor.getIHM().init("#copier", editor.getCopier());
+		editor.getIHM().init("#inserer", editor.getInserer());
+		editor.getIHM().init("#selectionner", editor.getSelectionner());
+		editor.getIHM().init("#afficher", editor.getTexte());
+		editor.getIHM().init("#start", editor.getStart());
+		editor.getIHM().init("#stop", editor.getStop());
+		editor.getIHM().init("#replay", editor.getReplay());
+		
+		editor.getMoteur().Inserer("Bonjour le Monde");
+		System.out.println(editor.getMoteur().getTexte().toString());
+		
+		editor.getIHM().getMap().get("#start").execute();
+		editor.getMoteur().Selectionner(0, 7);
+		//editor.getIHM().getMap().get("#selectionner").execute();
+		editor.getIHM().getMap().get("#couper").execute();
+		editor.getMoteur().Selectionner(100, 100);
+		//editor.getIHM().getMap().get("#selectionner").execute();
+		editor.getIHM().getMap().get("#coller").execute();
+		editor.getIHM().getMap().get("#stop").execute();
+		assertTrue(editor.getMoteur().getTexte().toString().equals(" le MondeBonjour")); //les commandes on bien été éxécuté ?
+		editor.getIHM().getMap().get("#replay").execute();
+		System.out.println(editor.getRecordeur().getReplaying());
+		/*
+		System.out.println(editor.getMoteur().getTexte().toString());
+		assertTrue(editor.getMoteur().getTexte().toString().equals("deBonjour le Mon"));
+		*/
 	}
 
 	@Test // on verifie que la HM de recordeur est bien vide a l'init
@@ -96,8 +137,7 @@ public class TestEnregistreurImp {
 		assertTrue(recordeur.getMap().equals(hmDeTest));	// vide par defaut ?
 		
 		recordeur.add(editor.getCouper(),new MementoCopier());
-		hmDeTest.put(new MementoCopier(), editor.getCouper());
-		assertTrue(recordeur.getMap().equals(hmDeTest));
+		assertFalse(recordeur.getMap().equals(hmDeTest)); // add rajoute bien dans le recordeur?
 		
 	}
 

@@ -31,7 +31,13 @@ public class IHM {
 	}
 	
 
-
+	public HashMap<String, Command> getMap() {
+		return map;
+	}
+	public void setMap(HashMap<String, Command> map) {
+		this.map = map;
+	}
+	
 	
 	public void boucle() {
 		boolean exec = true;	// boolean de boucle d'execution
