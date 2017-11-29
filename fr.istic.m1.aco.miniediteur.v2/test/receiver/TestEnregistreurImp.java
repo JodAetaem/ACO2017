@@ -31,6 +31,18 @@ public class TestEnregistreurImp {
 		interfaces = new IHM();
 		recordeur = new EnregistreurImp ();
 		editor = new Editeur();
+		
+
+		
+		editor.getIHM().init("#couper", editor.getCouper());
+		editor.getIHM().init("#coller", editor.getColler());
+		editor.getIHM().init("#copier", editor.getCopier());
+		editor.getIHM().init("#inserer", editor.getInserer());
+		editor.getIHM().init("#selectionner", editor.getSelectionner());
+		editor.getIHM().init("#afficher", editor.getTexte());
+		editor.getIHM().init("#start", editor.getStart());
+		editor.getIHM().init("#stop", editor.getStop());
+		editor.getIHM().init("#replay", editor.getReplay());
 	}
 
 	@After
@@ -82,7 +94,7 @@ public class TestEnregistreurImp {
 		recordeur.execute();
 		System.out.println(lemoteur.getTexte().toString());
 		assertTrue(lemoteur.getTexte().toString().equals("deBonjour le Mon"));
-		*/
+		
 		
 		
 		editor.getIHM().init("#couper", editor.getCouper());
@@ -94,7 +106,7 @@ public class TestEnregistreurImp {
 		editor.getIHM().init("#start", editor.getStart());
 		editor.getIHM().init("#stop", editor.getStop());
 		editor.getIHM().init("#replay", editor.getReplay());
-		
+		*/
 		editor.getMoteur().Inserer("Bonjour le Monde");
 		System.out.println(editor.getMoteur().getTexte().toString());
 		
@@ -123,12 +135,20 @@ public class TestEnregistreurImp {
 
 	@Test
 	public final void testStart() {
-		fail("Not yet implemented"); // TODO
+		editor.getIHM().getMap().get("#start").execute();
+		assertTrue(editor.getRecordeur().getRecording()); //Après le Start, recording = true
+		editor.getIHM().getMap().get("#stop").execute();
+		assertFalse(editor.getRecordeur().getRecording());//Après le stop, recording = false
+		
 	}
 
 	@Test
 	public final void testStop() {
-		fail("Not yet implemented"); // TODO
+		assertTrue(!editor.getRecordeur().getRecording()); // Par defaut a False ?
+		editor.getIHM().getMap().get("#start").execute();
+		assertFalse(!editor.getRecordeur().getRecording()); //Après le démarrage, Recording = True
+		editor.getIHM().getMap().get("#stop").execute();
+		assertFalse(editor.getRecordeur().getRecording()); // Après le Stop : Recording = False
 	}
 
 	@Test
