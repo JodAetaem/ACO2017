@@ -1,6 +1,5 @@
 package moteur;
 import Command.*;
-import Memento.*;
 import java.util.HashMap;
 import java.util.Scanner;
 
@@ -27,6 +26,7 @@ public class IHM {
 		bob[0] = sch.nextInt();
 		System.out.println("Fin>(-1 pour selectionner jusqu'a la fin)\n");
 		bob[1] = sch.nextInt();
+		sch.close();
 		return bob;
 	}
 	
