@@ -20,13 +20,7 @@ public class EnregistreurImp implements Enregistreur {
 		return isreplaying;
 	}
 	
-	
-	public void pp() {
-		String s=" je suis "+ (isrecording ? " " : "not") + "recording. ";
-		for(Memento m : hm.keySet()) {
-			s+=m.toString();
-		}
-	}
+
 	public void execute() {
 		if(!isrecording) {
 		isreplaying=true;
