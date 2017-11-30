@@ -8,10 +8,20 @@ public class IHM {
 	Scanner sc = new Scanner(System.in);
 	private  HashMap<String, Command> map = new HashMap<String, Command>();	// map commande
 	private String str = "";
-	
+	/**
+	 * 
+	 * @param str
+	 * @param cmd
+	 * @info ajoute la string s qui executera la commande cmd dans la map 
+	 */
 	public void init(String str, Command cmd){
 		map.put(str, cmd);
 		}
+	
+	/**
+	 * 
+	 * @return la string qui sera renvoyer par l'utilisateur via le scanner
+	 */
 	public String getTexte(){
 		return str ;
 	}
@@ -53,12 +63,12 @@ public class IHM {
 			if(map.containsKey(str)){
 				map.get(str).execute();
 				
-			} else if(str.equals("#close")){
+			} else if(str.equals("#close")){//cas d'arret de l'éxecution 
 				exec = false;
 				sc.close();
 				System.out.println("Merci d'avoir utilisee V2 BOF! Votre texte: \n");
 				afficher.execute();
-			}else {
+			}else {//cas de defaut qui est un inserer
 				Command inserer = map.get("#inserer");
 				inserer.execute();
 				}

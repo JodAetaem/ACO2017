@@ -11,19 +11,22 @@ public class Inserer  extends CommandImp{
 	}
 	
 	@Override
+	/**
+	 * execute la commande inserer 
+	 */
 	public void execute(){
 		String str;
-		if(!estrejoue) {
+		if(!estrejoue) { // Dans le cas ou ca n'est pas un replay 
 			str = this.ihm.getTexte();
 			LM.Inserer(str);
 		}
-		else {
+		else {//dans le cas ou c'est un replay 
 			str = ((MementoInserer) memento).getS();
 			LM.Inserer(str);
 		}
-		if(records.getRecording()) {
+		if(records.getRecording()) {//dans le cas d'un enregistrement
 			
-			records.add(this, new MementoInserer(str));
+			records.add(this, new MementoInserer(str));//Ajoute la commande ainsi que le memento et son attribu txt correspondant la LinkedHashmap de l'enregistreur records
 		}
 		estrejoue = false;
 	}

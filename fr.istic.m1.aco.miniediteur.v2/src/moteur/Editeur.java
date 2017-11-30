@@ -1,7 +1,4 @@
-/**
- * @(#) editorteur.java
- */
-// Client
+
 package moteur;
 import Command.*;
 import Memento.*;
@@ -28,6 +25,10 @@ public class Editeur{
 	private Selectionner selectionner = new Selectionner(this.lemoteur,this.recordeur,this.interfaces);
 	private GetTexte texte = new GetTexte(this.lemoteur,this.recordeur);
 	
+	
+	
+	
+	//tout les getter et setter 
 	public Moteur getMoteur(){
 		return this.lemoteur;
 	}
@@ -105,6 +106,13 @@ public class Editeur{
 		this.replay = replay;
 	}
 	
+	
+	
+	
+	
+	
+	
+	//Initialisation de toutes les commandes ainsi que de l'ihm et du moteur 
 	public static void main (String[] args){
 	Editeur editor = new Editeur();
 	//On met toutes les commandes dans la hashmap de l'IHM 
