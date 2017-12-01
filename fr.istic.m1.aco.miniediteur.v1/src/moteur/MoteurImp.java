@@ -134,6 +134,17 @@ public class MoteurImp implements Moteur
 	public void Copier() {
 		presspaper = texte.substring(selection.getStart(), selection.getEnd());
 			}
-
+	
+	/**
+	 * @info suppression de la selection
+	 */
+	
+	
+	public void delete() {
+		if(selection.getStart()==selection.getEnd()) {
+		selection.setStart(selection.getStart()-1);
+		}
+		texte.delete(selection.getStart(),selection.getEnd());
+	}
 }
 

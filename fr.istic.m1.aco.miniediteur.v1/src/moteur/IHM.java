@@ -20,7 +20,7 @@ public class IHM {
 	public void boucle() {
 		boolean exec = true;	// boolean de boucle d'execution
 		System.out.println("Bievenue dans LA V1 NULLE! rentrer votre texte ou votre commande en commençant par #\n"
-				+ "(#copier #coller #couper #selectionner #close)\n\n");
+				+ "(#copier #coller #couper #selectionner #delete #close)\n\n");
 		
 		while(exec){	// Boucle d'action : les commandes commences par #
 			Command afficher = map.get("#afficher");
