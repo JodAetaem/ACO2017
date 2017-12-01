@@ -24,8 +24,7 @@ public class Editeur{
 	private Copier copier = new Copier(this.lemoteur,this.recordeur);
 	private Selectionner selectionner = new Selectionner(this.lemoteur,this.recordeur,this.interfaces);
 	private GetTexte texte = new GetTexte(this.lemoteur,this.recordeur);
-	
-	
+	private Supprimer delete = new Supprimer(this.lemoteur,this.recordeur);
 	
 	
 	//tout les getter et setter 
@@ -105,7 +104,9 @@ public class Editeur{
 	public void setReplay(Replay replay) {
 		this.replay = replay;
 	}
-	
+	public Supprimer getDelete() {
+		return this.delete;
+	}
 	
 	
 	
@@ -125,6 +126,7 @@ public class Editeur{
 	editor.interfaces.init("#start", editor.getStart());
 	editor.interfaces.init("#stop", editor.getStop());
 	editor.interfaces.init("#replay", editor.getReplay());
+	editor.interfaces.init("#delete", editor.getDelete());
 			
 	//c'est parti
 	editor.interfaces.boucle();	

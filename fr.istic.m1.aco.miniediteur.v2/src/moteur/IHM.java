@@ -50,8 +50,8 @@ public class IHM {
 	
 	public void boucle() {
 		boolean exec = true;	// boolean de boucle d'execution
-		System.out.println("Bievenue dans LA V2 BOF! rentrer votre texte ou votre commande en commenÃ§ant par #\n"
-				+ "(#copier #coller #couper #selectionner #close)\n\n");
+		System.out.println("Bievenue dans LA V2 BOF! rentrer votre texte ou votre commande en commen�ant par #\n"
+				+ "(#copier #coller #couper #selectionner #delete #start #stop #replay #close)\n\n");
 		
 		while(exec){	// Boucle d'action : les commandes commences par #
 			Command afficher = map.get("#afficher");

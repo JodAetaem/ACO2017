@@ -61,6 +61,9 @@ public  interface Moteur
 	 */
 	
 	public void Selectionner(int parameter, int parameter2) ;
+	
+	
+	public void delete();
 
 
 }
