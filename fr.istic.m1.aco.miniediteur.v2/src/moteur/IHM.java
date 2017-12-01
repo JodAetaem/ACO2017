@@ -50,7 +50,7 @@ public class IHM {
 	
 	public void boucle() {
 		boolean exec = true;	// boolean de boucle d'execution
-		System.out.println("Bievenue dans LA V2 BOF! rentrer votre texte ou votre commande en commençant par #\n"
+		System.out.println("Bievenue dans LA V2 BOF! rentrer votre texte ou votre commande en commenÃ§ant par #\n"
 				+ "(#copier #coller #couper #selectionner #close)\n\n");
 		
 		while(exec){	// Boucle d'action : les commandes commences par #
@@ -62,7 +62,7 @@ public class IHM {
 			if(map.containsKey(str)){
 				map.get(str).execute();
 				
-			} else if(str.equals("#close")){//cas d'arret de l'�xecution 
+			} else if(str.equals("#close")){//cas d'arret de l'éxecution 
 				exec = false;
 				sc.close();
 				System.out.println("Merci d'avoir utilisee V2 BOF! Votre texte: \n");
