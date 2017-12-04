@@ -33,6 +33,8 @@ public class Editeur{
 	private Undo undo = new Undo(this.lemoteur,this.recordeur,this.undoredo);
 	private Redo redo = new Redo(this.lemoteur,this.recordeur,this.undoredo);
 	
+	
+	/////Getters Setters Attributs pricipaux /////
 	public Moteur getMoteur(){
 		return this.lemoteur;
 	}
@@ -54,6 +56,14 @@ public class Editeur{
 		this.interfaces = interfaces;
 	}
 	
+	public UndoRedo getUndoredo() {
+		return undoredo;
+	}
+	public void setUndoredo(UndoRedo undoredo) {
+		this.undoredo = undoredo;
+	}
+	
+	//// Getterts setters fonctions ////
 	public Couper getCouper() {
 		return couper;
 	}
