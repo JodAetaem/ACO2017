@@ -1,22 +1,14 @@
 package moteur;
 
 
-
 /**
  * <!-- begin-user-doc -->
  * <!--  end-user-doc  -->
  * @generated
  */
-public  interface Moteur 
+
+public class Selection
 {
-	/*getter et setter
-	 * 
-	 */
-	public StringBuffer getTexte() ;
-	public void setTexte(StringBuffer texte) ;
-	public String getPresspaper() ;
-	public void setPresspaper(String presspaper);
-	public Selection getSelection() ;
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!--  end-user-doc  -->
@@ -24,7 +16,7 @@ public  interface Moteur
 	 * @ordered
 	 */
 	
-	public void Coller() ;
+	private int start;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -33,7 +25,23 @@ public  interface Moteur
 	 * @ordered
 	 */
 	
-	public void Copier() ;
+	private int end;
+
+	public int getStart() {
+		return start;
+	}
+
+	public void setStart(int start) {
+		this.start = start;
+	}
+
+	public int getEnd() {
+		return end;
+	}
+
+	public void setEnd(int end) {
+		this.end = end;
+	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -42,7 +50,21 @@ public  interface Moteur
 	 * @ordered
 	 */
 	
-	public void Couper() ;
+	public MoteurImp moteurImp;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!--  end-user-doc  -->
+	 * @generated
+	 */
+	public Selection(){
+		super();
+	}
+	
+	public Selection(int Start, int End){
+		start=Start;
+		end=End;
+	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -51,18 +73,10 @@ public  interface Moteur
 	 * @ordered
 	 */
 	
-	public void Inserer(String parameter) ;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
-	 */
-	
-	public void Selectionner(int parameter, int parameter2) ;
-	public void delete();
-
+	public void selection(int Start, int End) {
+		start=Start;
+		end=End;
+	}
 
 }
 

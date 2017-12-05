@@ -23,6 +23,8 @@ public class Editeur{
 	private Copier copier = new Copier(this.lemoteur);
 	private Selectionner selectionner = new Selectionner(this.lemoteur);
 	private GetTexte texte = new GetTexte(this.lemoteur);
+	private Supprimer delete = new Supprimer(this.lemoteur);
+	
 	
 	public Moteur getMoteur(){
 		return this.lemoteur;
@@ -48,6 +50,9 @@ public class Editeur{
 	public GetTexte getGetTexte() {
 		return this.texte;
 	}
+	public Supprimer getDelete() {
+		return this.delete;
+	}
 	public static void main (String[] args){
 	/*fonction boucle dans L'IHM qui demande commande
 	 * juste avant faut creer une fonction dans ihm init qui ajouter les instance de l'editeur dans la map
@@ -64,6 +69,7 @@ public class Editeur{
 	edi.getIHM().init("#inserer", edi.getInserer());
 	edi.getIHM().init("#selectionner", edi.getSelectionner());
 	edi.getIHM().init("#afficher", edi.getGetTexte());
+	edi.getIHM().init("#delete", edi.getDelete());
 	edi.getIHM().boucle();	
 	
 	

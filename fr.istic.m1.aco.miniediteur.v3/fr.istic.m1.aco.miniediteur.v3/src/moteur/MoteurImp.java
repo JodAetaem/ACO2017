@@ -52,6 +52,11 @@ public class MoteurImp implements Moteur
 	public Selection getSelection() {
 		return selection;
 	}
+	
+	public void setSelection(int start, int end) {
+		selection.setEnd(end);
+		selection.setStart(start);
+	}
 
 
 	/**
@@ -71,16 +76,49 @@ public class MoteurImp implements Moteur
 	 * @ordered
 	 */
 	public void Selectionner(int start, int end) {
-		if(texte.length()<end || texte.length()<start){
-			System.err.println("Erreur: Debut ou fin de taille incorrect");
+		if(end !=-1 ) {
+			if(start < 0 || end < 0 ) {
+				selection.setStart(0);
+				selection.setEnd(0);
+			}
+			else if(texte.length()<end ){
+				if(texte.length()<start) {
+					selection.setEnd(texte.length()); //end et start son plus grand que la longeur u texte
+					selection.setStart(texte.length());//on selectionne donc tout le texte
+				}
+				else {
+					selection.setStart(start);
+					selection.setEnd(texte.length());
+				}
+			}
+			else if(texte.length()<start) { //si jamais selection end correct mais start incorrect (ex: 117000 et 3)
+				selection.setStart(end);	// mets le curseur a la position valide end
+				selection.setEnd(end);
+			}
+			else if (end<start){
+				selection.setStart(end);
+				selection.setEnd(start);
+				
+			}else {
+				selection.setStart(start);
+				selection.setEnd(end);
+				}
 		}
-		else if (end<start){
-			System.err.println("Erreur : end<Start");
+		else {
+			if(start<0) {
+				selection.setStart(0);
+				selection.setEnd(texte.length());
+			}
+			else if(texte.length()<start) {
+				selection.setEnd(texte.length()); //end et start son plus grand que la longeur u texte
+				selection.setStart(texte.length());//on selectionne donc tout le texte
+			}
+			else {
+				selection.setStart(start);
+				selection.setEnd(texte.length());
+			}
 		}
-		else{
-		selection.setStart(start);
-		selection.setEnd(end);
-		}
+		
 	}
 
 	/**
@@ -135,16 +173,15 @@ public class MoteurImp implements Moteur
 		presspaper = texte.substring(selection.getStart(), selection.getEnd());
 			}
 	
+	
 	/**
-	 * @info suppression de la selection
+	 * mets la selection a la fin du texte
 	 */
-	
-	
-	public void delete() {
-		if(selection.getStart()==selection.getEnd()) {
-		selection.setStart(selection.getStart()-1);
-		}
-		texte.delete(selection.getStart(),selection.getEnd());
+	public void finDuTexte() {
+		setSelection(texte.length(), texte.length());
 	}
+
 }
+
+
 
