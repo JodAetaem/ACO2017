@@ -14,15 +14,29 @@ public class UndoRedo {
 	}
 	
 	// Getters setters
+	/**
+	 * @return Stack<State> undo , la stack des états précédents
+	 */
 	public Stack<State> getUndo() {
 		return undo;
 	}
+	/**
+	 * 
+	 * @param undo : la Stack<State> dont undo deviens la copie
+	 */
 	public void setUndo(Stack<State> undo) {
 		this.undo = undo;
 	}
+	/**
+	 * @return Stack<State> redo, la stack des états suivants
+	 */
 	public Stack<State> getRedo() {
 		return redo;
 	}
+	/**
+	 * 
+	 * @param redo : la Stack<State> dont redo deviens la copie
+	 */
 	public void setRedo(Stack<State> redo) {
 		this.redo = redo;
 	}
