@@ -84,26 +84,8 @@ public class TestEnregistreurImp {
 		editor.getIHM().getMap().get("#stop").execute();//fin du record
 		assertTrue(editor.getMoteur().getTexte().toString().equals(" le MondeBonjour")); //les commandes on bien été éxécuté ?
 		editor.getIHM().getMap().get("#replay").execute();
-		System.out.println(editor.getMoteur().getTexte().toString());
 		assertTrue(editor.getMoteur().getTexte().toString().equals("deBonjour le Mon"));//Le replay passe bien 
 		
-		//reinitialisation du texte ! OBJECTIF DE LA MACRO : Remplacer les 3 premiers caracteres par ouf
-		editor.getMoteur().Selectionner(0, -1);
-		editor.getMoteur().Inserer("Bonjour le Monde");
-		editor.getIHM().getMap().get("#start").execute();//start recording
-		MementoSelectionner sel3 = new MementoSelectionner(0,3);
-		editor.getRecordeur().add(editor.getIHM().getMap().get("#selectionner"), sel3);
-		editor.getMoteur().Selectionner(0, 3);//selection ddes 3 premiers caracteres
-		MementoInserer ins = new MementoInserer("ouf");
-		editor.getRecordeur().add(editor.getIHM().getMap().get("#inserer"), ins);
-		editor.getMoteur().Inserer("ouf");
-		editor.getIHM().getMap().get("#stop").execute();//fin du record
-		assertTrue(editor.getMoteur().getTexte().toString().equals("oufjour le Monde"));
-		editor.getMoteur().Selectionner(0, 3);//selection des 3 premiers caracteres
-		editor.getMoteur().Inserer("blabla");
-		editor.getIHM().getMap().get("#replay").execute();
-		System.out.println(editor.getMoteur().getTexte().toString()+"TA MERE LA GROSSE PUTE");
-		assertTrue(editor.getMoteur().getTexte().toString().equals("oufblajour le Monde"));
 		
 	}
 
