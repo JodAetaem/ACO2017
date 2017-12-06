@@ -8,14 +8,23 @@ public class IHM {
 	Scanner sc = new Scanner(System.in);
 	private  HashMap<String, Command> map = new HashMap<String, Command>();	// map commande
 	private String str = "";
-	
+	/**
+	 * 
+	 * @param str
+	 * @param cmd
+	 * @info ajoute la string s qui executera la commande cmd dans la map 
+	 */
 	public void init(String str, Command cmd){
 		map.put(str, cmd);
 		}
+	
+	/**
+	 * 
+	 * @return la string qui sera renvoyer par l'utilisateur via le scanner
+	 */
 	public String getTexte(){
 		return str ;
 	}
-	
 	/**
 	 * 
 	 * @return tableau de 2 int contenant le debut (0) et la fin (1)
@@ -40,8 +49,8 @@ public class IHM {
 	
 	public void boucle() {
 		boolean exec = true;	// boolean de boucle d'execution
-		System.out.println("Bievenue dans LA V2 BOF! rentrer votre texte ou votre commande en commençant par #\n"
-				+ "(#copier #coller #couper #selectionner #close)\n\n");
+		System.out.println("Bievenue dans LA V2 BOF! rentrer votre texte ou votre commande en commen�ant par #\n"
+				+ "(#copier #coller #couper #selectionner #delete #start #stop #replay #close)\n\n");
 		
 		while(exec){	// Boucle d'action : les commandes commences par #
 			Command afficher = map.get("#afficher");
@@ -52,12 +61,12 @@ public class IHM {
 			if(map.containsKey(str)){
 				map.get(str).execute();
 				
-			} else if(str.equals("#close")){
+			} else if(str.equals("#close")){//cas d'arret de l'éxecution 
 				exec = false;
 				sc.close();
 				System.out.println("Merci d'avoir utilisee V2 BOF! Votre texte: \n");
 				afficher.execute();
-			}else {
+			}else {//cas de defaut qui est un inserer
 				Command inserer = map.get("#inserer");
 				inserer.execute();
 				}

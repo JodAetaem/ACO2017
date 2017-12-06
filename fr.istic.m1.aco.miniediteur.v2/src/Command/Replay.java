@@ -11,6 +11,9 @@ public class Replay extends CommandImp{
 	}
 
 	@Override
+	/**
+	 * @info execute la commande replay
+	 */
 	public void execute() {
 		records.execute();
 		//a ajouter dans la map de records si on veut rejouer des macro pendant une macro

@@ -10,6 +10,9 @@ public class Stop extends CommandImp {
 	}
 
 	@Override
+	/**
+	 * @info termine l'enregistrement
+	 */
 	public void execute() {
 		records.stop();
 		//a ajouter dans la map de records si on veut faire macro de macro 

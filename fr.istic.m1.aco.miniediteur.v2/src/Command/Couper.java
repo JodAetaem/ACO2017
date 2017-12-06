@@ -8,10 +8,13 @@ public class Couper extends CommandImp{
 	}
 	
 	@Override
+	/**
+	 * @info execute la commande Couper
+	 */
 	public void execute(){
 		LM.Couper();
 		if(records.getRecording()) {
-			records.add(this,new MementoCouper());
+			records.add(this,new MementoCouper());//Ajoute la commande ainsi que le memento correspondant dans la LinkedHashmap de l'enregistreur records
 		}estrejoue=false;
 	}
 }

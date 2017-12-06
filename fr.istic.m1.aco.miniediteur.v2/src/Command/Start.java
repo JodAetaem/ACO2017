@@ -9,6 +9,9 @@ public class Start extends CommandImp {
 	}
 
 	@Override
+	/**
+	 * @info debute l'enregistrement 
+	 */
 	public void execute() {
 		records.start();
 	 //a ajouter dans la map de record si on veut faire des macros de macro 
