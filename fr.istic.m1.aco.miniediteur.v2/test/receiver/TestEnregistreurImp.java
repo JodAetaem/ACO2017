@@ -1,5 +1,6 @@
 package receiver;
 
+
 import static org.junit.Assert.*;
 
 import java.util.LinkedHashMap;
@@ -13,6 +14,7 @@ import Memento.Enregistreur;
 import Memento.EnregistreurImp;
 import Memento.Memento;
 import Memento.MementoCopier;
+import Memento.*;
 import moteur.Editeur;
 
 public class TestEnregistreurImp {
@@ -42,11 +44,6 @@ public class TestEnregistreurImp {
 	public void tearDown() throws Exception {
 	}
 
-	@Test
-	public final void testEnregistreurImp() {
-		 // TODO
-	}
-
 	@Test // retourne l'état de recording, faux avant le start et après le stop.
 	public final void testGetRecording() {
 		assertTrue(recordeur.getRecording()==false);
@@ -69,28 +66,44 @@ public class TestEnregistreurImp {
 		
 	}
 
-	@Test
-	public final void testPp() {
-	// NOT TODO , fonction inutile
-	}
 
 	@Test
 	public final void testExecute() {
 		
-		editor.getMoteur().Inserer("Bonjour le Monde");
-		System.out.println(editor.getMoteur().getTexte().toString());
+		editor.getMoteur().Inserer("Bonjour le Monde");//Initialisation du texte
 		
-		editor.getIHM().getMap().get("#start").execute();
-		editor.getMoteur().Selectionner(0, 7);
-		//editor.getIHM().getMap().get("#selectionner").execute();
+		editor.getIHM().getMap().get("#start").execute();//start recording
+		MementoSelectionner sel1 = new MementoSelectionner(0,7);
+		editor.getRecordeur().add(editor.getIHM().getMap().get("#selectionner"), sel1);
+		editor.getMoteur().Selectionner(0, 7);//selection de bonjour
 		editor.getIHM().getMap().get("#couper").execute();
-		editor.getMoteur().Selectionner(100, 100);
-		//editor.getIHM().getMap().get("#selectionner").execute();
+		MementoSelectionner sel2 = new MementoSelectionner(100,-1);
+		editor.getRecordeur().add(editor.getIHM().getMap().get("#selectionner"), sel2);
+		editor.getMoteur().Selectionner(100, -1);//positionnement du curseur a la fin
 		editor.getIHM().getMap().get("#coller").execute();
-		editor.getIHM().getMap().get("#stop").execute();
+		editor.getIHM().getMap().get("#stop").execute();//fin du record
 		assertTrue(editor.getMoteur().getTexte().toString().equals(" le MondeBonjour")); //les commandes on bien été éxécuté ?
 		editor.getIHM().getMap().get("#replay").execute();
-		System.out.println(editor.getRecordeur().getReplaying());
+		System.out.println(editor.getMoteur().getTexte().toString());
+		assertTrue(editor.getMoteur().getTexte().toString().equals("deBonjour le Mon"));//Le replay passe bien 
+		
+		//reinitialisation du texte ! OBJECTIF DE LA MACRO : Remplacer les 3 premiers caracteres par ouf
+		editor.getMoteur().Selectionner(0, -1);
+		editor.getMoteur().Inserer("Bonjour le Monde");
+		editor.getIHM().getMap().get("#start").execute();//start recording
+		MementoSelectionner sel3 = new MementoSelectionner(0,3);
+		editor.getRecordeur().add(editor.getIHM().getMap().get("#selectionner"), sel3);
+		editor.getMoteur().Selectionner(0, 3);//selection ddes 3 premiers caracteres
+		MementoInserer ins = new MementoInserer("ouf");
+		editor.getRecordeur().add(editor.getIHM().getMap().get("#inserer"), ins);
+		editor.getMoteur().Inserer("ouf");
+		editor.getIHM().getMap().get("#stop").execute();//fin du record
+		assertTrue(editor.getMoteur().getTexte().toString().equals("oufjour le Monde"));
+		editor.getMoteur().Selectionner(0, 3);//selection des 3 premiers caracteres
+		editor.getMoteur().Inserer("blabla");
+		editor.getIHM().getMap().get("#replay").execute();
+		System.out.println(editor.getMoteur().getTexte().toString()+"TA MERE LA GROSSE PUTE");
+		assertTrue(editor.getMoteur().getTexte().toString().equals("oufblajour le Monde"));
 		
 	}
 

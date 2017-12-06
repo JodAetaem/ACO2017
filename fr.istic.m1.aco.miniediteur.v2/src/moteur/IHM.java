@@ -25,7 +25,6 @@ public class IHM {
 	public String getTexte(){
 		return str ;
 	}
-	
 	/**
 	 * 
 	 * @return tableau de 2 int contenant le debut (0) et la fin (1)
