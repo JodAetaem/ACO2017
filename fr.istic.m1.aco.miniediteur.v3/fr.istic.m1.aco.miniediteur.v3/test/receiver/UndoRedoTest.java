@@ -41,6 +41,7 @@ public class UndoRedoTest {
 		editor.getIHM().init("#start", editor.getStart());
 		editor.getIHM().init("#stop", editor.getStop());
 		editor.getIHM().init("#replay", editor.getReplay());
+		editor.getIHM().init("#delete", editor.getDelete());
 		
 		editor.getIHM().init("#undo", editor.getUndo());
 		editor.getIHM().init("#redo", editor.getRedo());
@@ -58,6 +59,16 @@ public class UndoRedoTest {
 		int tailleapres =  editor.getUndoredo().getUndo().size();
 		assertTrue(tailleavant<tailleapres);
 		
+		
+		editor.getIHM().getMap().get("#couper").execute();
+		tailleavant =  editor.getUndoredo().getUndo().size();
+		assertTrue(tailleavant>tailleapres);
+		
+		
+		editor.getIHM().getMap().get("#delete").execute();
+		tailleapres =  editor.getUndoredo().getUndo().size();
+		assertTrue(tailleavant<tailleapres);
+		
 	}
 
 	@Test
@@ -66,7 +77,10 @@ public class UndoRedoTest {
 		editor.getIHM().getMap().get("#couper").execute();
 		int tailleavant = editor.getUndoredo().getRedo().size();
 		editor.getIHM().getMap().get("#undo").execute();
-		int tailleapres =  editor.getUndoredo().getUndo().size();
+		int tailleapres =  editor.getUndoredo().getRedo().size();
+		assertTrue(tailleavant<tailleapres);
+		editor.getIHM().getMap().get("#couper").execute();
+		tailleavant = editor.getUndoredo().getRedo().size();
 		assertTrue(tailleavant<tailleapres);
 		
 	}
@@ -83,7 +97,13 @@ public class UndoRedoTest {
 
 	@Test
 	public final void testNoMoreRedo() {
-		fail("Not yet implemented"); // TODO
+		editor.getIHM().getMap().get("#couper").execute();
+		editor.getIHM().getMap().get("#undo").execute();
+		int tailleavant = editor.getUndoredo().getRedo().size();
+		editor.getUndoredo().noMoreRedo();
+		int tailleapres =  editor.getUndoredo().getRedo().size();
+		assertTrue(tailleavant>tailleapres);
+		
 	}
 
 }

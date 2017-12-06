@@ -183,7 +183,10 @@ public class MoteurImp implements Moteur
 	
 	public void delete() {
 		if(selection.getStart()==selection.getEnd()) {
-		selection.setStart(selection.getStart()-1);
+			if(selection.getStart()>0) {
+				selection.setStart(selection.getStart()-1);
+			}
+		
 		}
 		texte.delete(selection.getStart(),selection.getEnd());
 	}

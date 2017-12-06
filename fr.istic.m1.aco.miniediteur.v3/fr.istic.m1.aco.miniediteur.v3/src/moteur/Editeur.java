@@ -30,7 +30,8 @@ public class Editeur{
 	private Copier copier = new Copier(this.lemoteur,this.recordeur);
 	private Selectionner selectionner = new Selectionner(this.lemoteur,this.recordeur,this.interfaces);
 	private GetTexte texte = new GetTexte(this.lemoteur,this.recordeur);
-	private Supprimer delete = new Supprimer(this.lemoteur,this.recordeur);
+	private Supprimer delete = new Supprimer(this.lemoteur,this.recordeur,this.undoredo);
+	
 	private Undo undo = new Undo(this.lemoteur,this.recordeur,this.undoredo);
 	private Redo redo = new Redo(this.lemoteur,this.recordeur,this.undoredo);
 	
