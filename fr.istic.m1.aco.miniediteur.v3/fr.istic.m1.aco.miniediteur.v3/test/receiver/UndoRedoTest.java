@@ -8,8 +8,11 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import Command.Inserer;
 import Memento.Enregistreur;
 import Memento.EnregistreurImp;
+import Memento.MementoInserer;
+import Memento.MementoSelectionner;
 import moteur.Editeur;
 import undoRedo.State;
 import undoRedo.StateImp;
@@ -50,23 +53,21 @@ public class UndoRedoTest {
 
 	@Test
 	public final void testAddPrevious() { // TODO
-		/*
-		Stack<State> undoCompare = new Stack<State>();
-		undoCompare.push(new StateImp(editor.getMoteur()));
-		assertTrue(undoCompare.equals(undoredo.getUndo()) ); //stackVide?
-		*/
-		editor.getMoteur().Inserer("Bonjour le Monde");
-		StateImp comparateur = new StateImp(editor.getMoteur());
-		editor.getMoteur().Selectionner(0, 7);
+		int tailleavant = editor.getUndoredo().getUndo().size();
 		editor.getIHM().getMap().get("#couper").execute();
-		State compare = editor.getUndoredo().getUndo().peek();
+		int tailleapres =  editor.getUndoredo().getUndo().size();
+		assertTrue(tailleavant<tailleapres);
 		
-		assertTrue(comparateur.getEtatTexte() == compare.getEtatTexte());
-		//editor.getIHM().getMap().get("#start").execute();
 	}
 
 	@Test
 	public final void testAddNext() {
+		
+		editor.getIHM().getMap().get("#couper").execute();
+		int tailleavant = editor.getUndoredo().getRedo().size();
+		editor.getIHM().getMap().get("#undo").execute();
+		int tailleapres =  editor.getUndoredo().getUndo().size();
+		assertTrue(tailleavant<tailleapres);
 		
 	}
 
