@@ -30,6 +30,7 @@ public class Editeur{
 	private Copier copier = new Copier(this.lemoteur,this.recordeur);
 	private Selectionner selectionner = new Selectionner(this.lemoteur,this.recordeur,this.interfaces);
 	private GetTexte texte = new GetTexte(this.lemoteur,this.recordeur);
+	private Supprimer delete = new Supprimer(this.lemoteur,this.recordeur);
 	private Undo undo = new Undo(this.lemoteur,this.recordeur,this.undoredo);
 	private Redo redo = new Redo(this.lemoteur,this.recordeur,this.undoredo);
 	
@@ -120,6 +121,10 @@ public class Editeur{
 		this.replay = replay;
 	}
 	
+	public Supprimer getDelete() {
+		return this.delete;
+	}
+	
 	public Undo getUndo() {
 		return undo;
 	}
@@ -132,6 +137,8 @@ public class Editeur{
 	public void setRedo(Redo redo) {
 		this.redo = redo;
 	}
+	
+	
 	public static void main (String[] args){
 	Editeur editor = new Editeur();
 	//On met toutes les commandes dans la hashmap de l'IHM 
@@ -144,6 +151,7 @@ public class Editeur{
 	editor.interfaces.init("#start", editor.getStart());
 	editor.interfaces.init("#stop", editor.getStop());
 	editor.interfaces.init("#replay", editor.getReplay());
+	editor.interfaces.init("#delete", editor.getDelete());
 	
 	editor.interfaces.init("#undo", editor.getUndo());
 	editor.interfaces.init("#redo", editor.getRedo());
