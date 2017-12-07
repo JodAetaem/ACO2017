@@ -65,7 +65,7 @@ public class Editeur{
 		this.undoredo = undoredo;
 	}
 	
-	//// Getterts setters fonctions ////
+	//// Getters setters fonctions ////
 	public Couper getCouper() {
 		return couper;
 	}

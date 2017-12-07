@@ -20,7 +20,9 @@ public class EnregistreurImp implements Enregistreur {
 		return isreplaying;
 	}
 	
-
+	/**
+	 * @info lance le replay
+	 */
 	public void execute() {
 		if(!isrecording) {
 		isreplaying=true;
@@ -35,6 +37,10 @@ public class EnregistreurImp implements Enregistreur {
 	public HashMap<Memento,Command> getMap (){
 		return this.hm;
 	}
+	
+	/**
+	 * @info lance l'enregistrement
+	 */
 	public void start() {
 		if(isrecording) {
 			System.out.println("You're already recording");
@@ -47,6 +53,10 @@ public class EnregistreurImp implements Enregistreur {
 			System.out.println("You can't make macros inside a macro, maybe in a future version, easy to implement");
 		}
 	}
+	
+	/**
+	 * @info fin de l'enregistrement
+	 */
 	public void stop() {
 		if(isrecording) {
 		isrecording=false;
@@ -55,6 +65,9 @@ public class EnregistreurImp implements Enregistreur {
 		else {System.out.println("There is no current recording");}
 	}
 	
+	/**
+	 * @info ajout de la commande et du memento dans la map de l'enregistreur
+	 */
 	public void add (Command c, Memento m) {
 		hm.put(m, c);//solar
 	}

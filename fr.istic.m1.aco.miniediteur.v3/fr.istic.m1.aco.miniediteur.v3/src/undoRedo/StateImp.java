@@ -7,10 +7,16 @@ public class StateImp implements State {
 	private StringBuffer etatTexte;
 
 	// Getters Setters
+	/**
+	 * @return etatTexte
+	 */
 	@Override 
 	public StringBuffer getEtatTexte() {
 		return etatTexte;
 	}
+	/**
+	 * etatTexte devient le nouveau etatTexte
+	 */
 	@Override 
 	public void setEtatTexte(StringBuffer etatTexte) {
 		this.etatTexte = etatTexte;

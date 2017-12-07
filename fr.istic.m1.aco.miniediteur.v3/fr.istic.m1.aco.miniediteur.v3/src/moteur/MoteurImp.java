@@ -70,8 +70,11 @@ public class MoteurImp implements Moteur
 		selection.selection(0,0);
 	}
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Change la selection dans le moteur. si end = -1, alors on prend la fin du texte
+	 * Corrige automatiquement les erreurs possibles de l'utilisateur:
+	 * Si end>Start , on intervertis les deux
+	 * si end est plus long que le texte, alors end = texte.lenght
+	 * si Start incorrect, start = end
 	 * @generated
 	 * @ordered
 	 */
